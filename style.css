@@ -1,0 +1,149 @@
+& {
+  --s: min(45px,round(6.5vw,1px));
+}
+n {
+	display: grid;
+	grid-template-columns: repeat(3,var(--s));
+}
+n:after {
+  content: "";
+  position: absolute;
+  height: var(--s);
+  aspect-ratio: 3;
+  bottom: 0;
+  right: 0;
+  transform-origin: bottom;
+  transform: rotateX(90deg);
+  box-shadow: 0 0 20px 7px #000d;
+}
+body:not(.rick) n.c45:after {
+  aspect-ratio: 1;
+}
+d {
+	aspect-ratio: 1;
+	background: 
+		url(https://assets.codepen.io/1480814/rick.webp)
+		calc(var(--x,0)*var(--s)) calc(50% + var(--y,0)*var(--s))/0px 0px;
+  background-color: #CE1836;
+	display: grid;
+  scale: 1.02;
+}
+.rick d{
+   background-size: calc(15*var(--s)) auto;
+}
+d:before,
+d:after {
+	content:"";
+	grid-area: 1/1;
+}
+d:before {
+	transform-origin: top;
+	transform: rotateX(-90deg);
+  background: #df5168;
+}
+d:nth-child(-n + 4):before {
+  background: #ff7c92;
+}
+d:after {
+	transform-origin: right;
+	transform: rotateY(-90deg);
+  background: #7d1022;
+}
+
+.c2 > :is(:nth-child(4),:nth-child(5),:nth-child(11),:nth-child(12)),
+.c0 > :is(:nth-child(5),:nth-child(8),:nth-child(11)),
+body:not(.rick) .c45 > :is(:nth-child(2),:nth-child(5),:nth-child(10),:nth-child(11),:nth-child(13),:nth-child(14)),
+body.rick .c45 > :is(:nth-child(5),:nth-child(6),:nth-child(10),:nth-child(11)){
+  visibility: hidden;
+}
+
+n:nth-child(1) d:nth-child(3n + 2) {--x:-1}
+n:nth-child(1) d:nth-child(3n + 3) {--x:-2}
+
+n:nth-child(2) d:nth-child(3n + 1) {--x:-4}
+n:nth-child(2) d:nth-child(3n + 2) {--x:-5}
+n:nth-child(2) d:nth-child(3n + 3) {--x:-6}
+
+n:nth-child(3) d:nth-child(3n + 1) {--x:-8}
+n:nth-child(3) d:nth-child(3n + 2) {--x:-9}
+n:nth-child(3) d:nth-child(3n + 3) {--x:-10}
+
+n:nth-child(4) d:nth-child(3n + 1) {--x:-12}
+n:nth-child(4) d:nth-child(3n + 2) {--x:-13}
+n:nth-child(4) d:nth-child(3n + 3) {--x:-14}
+
+d:is(:nth-child(1) ,:nth-child(2) ,:nth-child(3) ) {--y: 2}
+d:is(:nth-child(4) ,:nth-child(5) ,:nth-child(6) ) {--y: 1}
+d:is(:nth-child(10),:nth-child(11),:nth-child(12)) {--y:-1}
+d:is(:nth-child(13),:nth-child(14),:nth-child(15)) {--y:-2}
+
+
+body {
+	display: grid;
+	grid-auto-flow: column;
+	gap: var(--s);
+  transform-origin: top;
+  transform: perspective(800px) rotateY(-38deg) rotate(10deg) rotatex(-15deg) rotateY(15deg) translate(-10%,20%);
+	cursor: pointer;
+}
+html:after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  inset:0 0 100%
+}
+
+body:before {
+  content: "";
+  position: absolute;
+  inset: auto -120% 0;
+  aspect-ratio: 1;
+  background: 
+	 radial-gradient(#d3d4d4a6, #000 50%),
+   url(https://assets.codepen.io/1480814/rick-astley-rickroll.gif) 0 0/ 0 0,
+   conic-gradient(from 90deg at 2px 2px,#0000 25%,#3f3f3f 0) 0 0/3em 3em;
+  transform: rotateX(90deg) translateY(50%);
+  transform-origin: bottom;
+	pointer-events: none;
+}
+body.rick:before {
+  background-size: auto,3em 3em,3em 3em;
+}
+
+body:after {
+  content: "⬇ Click for a surprise ⬇";
+  text-align: center;
+  position: absolute;
+  color: #fff;
+  font-size: min(35px,round(8vw,1px));
+  font-family: sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  left: 57%;
+  white-space: pre;
+  transform: translate(-50%,-200%);
+	pointer-events: none;
+	animation: p .8s infinite linear;
+}
+body.rick:after {
+	content:"Happy New Year!! 🥳"
+}
+@keyframes p {
+	50% {translate: 0% 10%}
+}
+
+
+
+html {
+	min-height: 100%;
+	display: grid;
+	place-content: center;
+	background: #000;
+	overflow: hidden;
+  cursor: pointer;
+}
+
+* {
+	transform-style: preserve-3d;
+}
